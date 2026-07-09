@@ -1,16 +1,6 @@
-// IMC = peso (kg) ÷ (altura (m) × altura (m))
-
-/*
-
-
-Passo 2
-  1 -> começar sem o prompt e depois evoluir
-
-*/
-
 function userInfo() {
-    let peso;
-    let imputPeso;
+  let peso;
+  let imputPeso;
 
   do {
 
@@ -30,7 +20,6 @@ function userInfo() {
   let imputAltura;
 
   do {
-
     altura = prompt("Digite a sua altura");
 
     if (altura === null) break;
@@ -40,17 +29,19 @@ function userInfo() {
 
     if (imputAltura <= 0) alert("Coloque uma altura maior que zero");
     else if (Number.isNaN(imputAltura)) alert("Precisa ser um número maior que zero");
+    else if (!Number.isInteger(imputAltura)) alert("Precisa ser em centímetros");
 
-  } while (imputAltura <= 0 || Number.isNaN(imputAltura));
+  } while (imputAltura <= 0 || Number.isNaN(imputAltura) || !Number.isInteger(imputAltura));
 
-  return { peso: imputPeso, altura: imputAltura};
+  return { peso: imputPeso, altura: imputAltura };
 }
 const resultado = userInfo()
 
 
 function imc(peso, altura) {
-  const calculoIMC = Number((peso / Math.pow(altura, 2)).toFixed(2));
-  
+
+  const calculoIMC = Number((peso / Math.pow(altura / 100, 2)).toFixed(2));
+
   if (Number.isNaN(calculoIMC)) return;
 
   if (calculoIMC <= 18.5) alert(`Seu IMC: ${calculoIMC}\nAbaixo do peso`);
@@ -58,5 +49,4 @@ function imc(peso, altura) {
   else if (calculoIMC <= 29.9) alert(`Seu IMC: ${calculoIMC}\nSobrepeso`);
   else alert(`Seu IMC: ${calculoIMC}\nObesidade`);
 }
-
 imc(resultado.peso, resultado.altura);

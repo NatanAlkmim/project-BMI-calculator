@@ -1,52 +1,52 @@
 function userInfo() {
-  let peso;
-  let imputPeso;
+  let weight;
+  let imputWeight;
 
   do {
 
-    peso = prompt("Digite o seu peso");
+    weight = prompt("Digite o seu peso");
 
-    if (peso === null) break;
+    if (weight === null) break;
 
-    peso = peso.replace(",", ".");
-    imputPeso = Number(peso);
+    weight = weight.replace(",", ".");
+    imputWeight = Number(weight);
 
-    if (imputPeso <= 0) alert("Coloque um número maior que zero");
-    else if (Number.isNaN(imputPeso)) alert("Precisa ser um número maior que zero");
+    if (imputWeight <= 0) alert("Coloque um número maior que zero");
+    else if (Number.isNaN(imputWeight)) alert("Precisa ser um número maior que zero");
 
-  } while (imputPeso <= 0 || Number.isNaN(imputPeso));
+  } while (imputWeight <= 0 || Number.isNaN(imputWeight));
 
-  let altura;
-  let imputAltura;
+  let height;
+  let imputHeight;
 
   do {
-    altura = prompt("Digite a sua altura");
+    height = prompt("Digite a sua altura");
 
-    if (altura === null) break;
+    if (height === null) break;
     
-    altura = altura.replace(",", ".");
-    imputAltura = Number(altura);
+    height = height.replace(",", ".");
+    imputHeight = Number(height);
+    
+    if (imputHeight <= 0) alert("Coloque uma altura maior que zero");
+    else if (Number.isNaN(imputHeight)) alert("Precisa ser um número maior que zero");
+    else if (!Number.isInteger(imputHeight)) alert("Precisa ser em centímetros");
 
-    if (imputAltura <= 0) alert("Coloque uma altura maior que zero");
-    else if (Number.isNaN(imputAltura)) alert("Precisa ser um número maior que zero");
-    else if (!Number.isInteger(imputAltura)) alert("Precisa ser em centímetros");
+  } while (imputHeight <= 0 || Number.isNaN(imputHeight) || !Number.isInteger(imputHeight));
 
-  } while (imputAltura <= 0 || Number.isNaN(imputAltura) || !Number.isInteger(imputAltura));
-
-  return { peso: imputPeso, altura: imputAltura };
+  return { weight: imputWeight, height: imputHeight };
 }
-const resultado = userInfo()
+const result = userInfo();
 
 
-function imc(peso, altura) {
+function imc(weight, height) {
 
-  const calculoIMC = Number((peso / Math.pow(altura / 100, 2)).toFixed(2));
+  const calcBMI = Number((weight / Math.pow(height / 100, 2)).toFixed(2));
 
-  if (Number.isNaN(calculoIMC)) return;
+  if (Number.isNaN(calcBMI)) return;
 
-  if (calculoIMC <= 18.5) alert(`Seu IMC: ${calculoIMC}\nAbaixo do peso`);
-  else if (calculoIMC <= 24.9) alert(`Seu IMC: ${calculoIMC}\nPeso normal`);
-  else if (calculoIMC <= 29.9) alert(`Seu IMC: ${calculoIMC}\nSobrepeso`);
-  else alert(`Seu IMC: ${calculoIMC}\nObesidade`);
+  if (calcBMI <= 18.5) alert(`Seu IMC: ${calcBMI}\nAbaixo do peso`);
+  else if (calcBMI <= 24.9) alert(`Seu IMC: ${calcBMI}\nPeso normal`);
+  else if (calcBMI <= 29.9) alert(`Seu IMC: ${calcBMI}\nSobrepeso`);
+  else alert(`Seu IMC: ${calcBMI}\nObesidade`);
 }
-imc(resultado.peso, resultado.altura);
+imc(result.weight, result.height);

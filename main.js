@@ -6,7 +6,10 @@ function userInfo() {
 
     weight = prompt("Digite o seu peso");
 
-    if (weight === null) break;
+    if (weight === null) {
+      imputWeight = NaN;
+      break;
+    };
 
     weight = weight.replace(",", ".");
     imputWeight = Number(weight);
@@ -22,7 +25,10 @@ function userInfo() {
   do {
     height = prompt("Digite a sua altura");
 
-    if (height === null) break;
+    if (height === null) {
+      imputHeight = NaN;
+      break;
+    };
     
     height = height.replace(",", ".");
     imputHeight = Number(height);

@@ -19,6 +19,8 @@ function userInfo() {
 
   } while (imputWeight <= 0 || Number.isNaN(imputWeight));
 
+
+
   let height;
   let imputHeight;
 
